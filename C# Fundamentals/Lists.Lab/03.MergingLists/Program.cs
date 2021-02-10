@@ -11,20 +11,22 @@ namespace _03.MergingLists
             List<int> rowOne = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
             List<int> rowTwo = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
 
-            List<int> minRow = GetMinRow(rowOne, rowTwo);
-            List<int> maxRow = GetMaxRow(rowOne, rowTwo);
-
             List<int> result = new List<int>();
 
-            for (int i = 0; i < minRow.Count; i++)
-            {
-                result.Add(minRow[i]);
-                result.Add(maxRow[i]);
-            }
+            int i = 0;
+            int j = 0;
 
-            for (int i = minRow.Count; i < maxRow.Count; i++)
+            while (i < rowOne.Count  || j < rowTwo.Count )
             {
-                result.Add(maxRow[i]);
+                if (i < rowOne.Count)
+                {
+                    result.Add(rowOne[i++]);
+                }
+
+                if (j < rowTwo.Count)
+                {
+                    result.Add(rowTwo[j++]);
+                }
             }
 
             Console.WriteLine(string.Join(' ', result));
