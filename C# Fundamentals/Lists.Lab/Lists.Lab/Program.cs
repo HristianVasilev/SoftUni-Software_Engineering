@@ -6,7 +6,12 @@ namespace Lists.Lab
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            double n = 2.0;
+            while (n < 2.1)
+            {
+                n++;
+                Console.WriteLine(n);
+            }
         }
     }
 }
