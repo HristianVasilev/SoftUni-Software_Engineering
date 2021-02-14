@@ -6,9 +6,11 @@ namespace _05.BombNumbers
 {
     class Program
     {
+        private static List<int> sequence;
+
         static void Main(string[] args)
         {
-            List<int> sequence = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
+            sequence = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
             int[] info = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
             int bombNumber = info[0];
@@ -18,7 +20,7 @@ namespace _05.BombNumbers
 
             while (bombLocation != -1)
             {
-                Detonate(sequence, bombLocation, bombNumber, power);
+                Detonate(bombLocation, bombNumber, power);
 
                 bombLocation = sequence.IndexOf(sequence.FirstOrDefault(x => x == bombNumber));
             }
@@ -27,19 +29,19 @@ namespace _05.BombNumbers
             Console.WriteLine(result);
         }
 
-        private static void Detonate(List<int> sequence, int bombLocation, int bombNumber, int power)
+        private static void Detonate(int bombLocation, int bombNumber, int power)
         {
-            int startIndex = GetIndex(sequence, bombLocation, power, 0);
-            int endIndex = GetIndex(sequence, bombLocation, power, sequence.Count - 1);
+            int startIndex = GetIndex(bombLocation, -power, 0);
+            int endIndex = GetIndex(bombLocation, power, sequence.Count - 1);
 
-            CheckForBombsInTheRange(sequence, bombLocation, bombNumber, power, startIndex, endIndex);
+            endIndex = CheckForBombInRight(bombLocation, bombNumber, power, endIndex);
 
             sequence.RemoveRange(startIndex, endIndex - startIndex + 1);
         }
 
-        private static int GetIndex(List<int> sequence, int bombLocation, int power, int defaultValue)
+        private static int GetIndex(int bombLocation, int power, int defaultValue)
         {
-            int index = bombLocation - power;
+            int index = bombLocation + power;
 
             if (!ValidIndex(sequence, index))
             {
@@ -49,26 +51,22 @@ namespace _05.BombNumbers
             return index;
         }
 
-        private static int CheckForBombsInTheRange(List<int> sequence, int bombLocation, int bombNumber, int power, int startIndex, int endIndex)
+        private static int CheckForBombInRight(int bombLocation, int bombNumber, int power, int endIndex)
         {
-            int lastIndexOfAnotherBomb = -1;
-            for (int i = bombLocation + 1; i < endIndex; i++)
+            int lastIndexOfBomb = -1;
+
+            for (int i = bombLocation + 1; i <= endIndex; i++)
             {
                 if (sequence[i] == bombNumber)
                 {
-                    lastIndexOfAnotherBomb = i;
+                    lastIndexOfBomb = i;
                 }
             }
 
-            if (lastIndexOfAnotherBomb != -1)
+            if (lastIndexOfBomb != -1)
             {
-                endIndex = GetIndex(sequence, lastIndexOfAnotherBomb, power, sequence.Count - 1);
-                int index = CheckForBombsInTheRange(sequence, lastIndexOfAnotherBomb, bombNumber, power, startIndex, endIndex);
-
-                if (index > endIndex)
-                {
-                    endIndex = index;
-                }
+                endIndex = GetIndex(lastIndexOfBomb, power, sequence.Count - 1);
+                endIndex = CheckForBombInRight(lastIndexOfBomb, bombNumber, power, endIndex);
             }
 
             return endIndex;
