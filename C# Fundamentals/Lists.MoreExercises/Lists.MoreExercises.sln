@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Messaging", "01.Messagin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.CarRace", "02.CarRace\02.CarRace.csproj", "{E146EA2B-2DF8-411E-9D7A-9E85952745FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.TakeSkipRope", "03.TakeSkipRope\03.TakeSkipRope.csproj", "{CAD344E4-3369-4E04-8332-80CA34162825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.TakeSkipRope", "03.TakeSkipRope\03.TakeSkipRope.csproj", "{CAD344E4-3369-4E04-8332-80CA34162825}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.MixedUpLists", "04.MixedUpLists\04.MixedUpLists.csproj", "{DAD8B122-94B4-4F4C-B1A9-2A1AB78AC14A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.DrumSet", "05.DrumSet\05.DrumSet.csproj", "{C2F35CBB-AF3A-4AB2-A2D3-EFD941C9C571}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.MisedUpListsTwo", "04.MisedUpListsTwo\04.MisedUpListsTwo.csproj", "{33225268-ECA8-4F92-B3AE-ED6586FBF41D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{CAD344E4-3369-4E04-8332-80CA34162825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAD344E4-3369-4E04-8332-80CA34162825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAD344E4-3369-4E04-8332-80CA34162825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD8B122-94B4-4F4C-B1A9-2A1AB78AC14A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD8B122-94B4-4F4C-B1A9-2A1AB78AC14A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD8B122-94B4-4F4C-B1A9-2A1AB78AC14A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD8B122-94B4-4F4C-B1A9-2A1AB78AC14A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2F35CBB-AF3A-4AB2-A2D3-EFD941C9C571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F35CBB-AF3A-4AB2-A2D3-EFD941C9C571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F35CBB-AF3A-4AB2-A2D3-EFD941C9C571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F35CBB-AF3A-4AB2-A2D3-EFD941C9C571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33225268-ECA8-4F92-B3AE-ED6586FBF41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33225268-ECA8-4F92-B3AE-ED6586FBF41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33225268-ECA8-4F92-B3AE-ED6586FBF41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33225268-ECA8-4F92-B3AE-ED6586FBF41D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
