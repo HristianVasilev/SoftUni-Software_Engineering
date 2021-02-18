@@ -14,17 +14,23 @@ namespace _1.NationalCourt
                 employeesEfficiency[i] = byte.Parse(Console.ReadLine());
             }
 
-            short countOfPeople = short.Parse(Console.ReadLine());
+            int countOfPeople = int.Parse(Console.ReadLine());
+            int efficiencyPerHour = employeesEfficiency.Sum(x => x);
 
-            short totalEfficiencyPerHour = (short)(employeesEfficiency.Sum(x => x));
+            int time = 0;
 
-            double timeNeeded = countOfPeople / (1.0 * totalEfficiencyPerHour);
+            while (countOfPeople > 0)
+            {
+                time++;
+                countOfPeople -= efficiencyPerHour;
 
-            short restHours = (short)(timeNeeded / 3);
+                if (time % 4 == 0)
+                {
+                    time++;
+                }
+            }
 
-            timeNeeded += restHours;
-
-            Console.WriteLine($"Time needed: {Math.Ceiling(timeNeeded)}h.");
+            Console.WriteLine($"Time needed: {time}h.");
         }
     }
 }
