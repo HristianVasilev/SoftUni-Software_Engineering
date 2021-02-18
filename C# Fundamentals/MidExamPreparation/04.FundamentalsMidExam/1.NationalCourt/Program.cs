@@ -7,20 +7,20 @@ namespace _1.NationalCourt
     {
         static void Main(string[] args)
         {
-            int[] employeesEfficiency = new int[3];
+            byte[] employeesEfficiency = new byte[3];
 
             for (int i = 0; i < employeesEfficiency.Length; i++)
             {
-                employeesEfficiency[i] = int.Parse(Console.ReadLine());
+                employeesEfficiency[i] = byte.Parse(Console.ReadLine());
             }
 
-            int countOfPeople = int.Parse(Console.ReadLine());
+            short countOfPeople = short.Parse(Console.ReadLine());
 
-            int totalEfficiencyPerHour = employeesEfficiency.Sum();
+            short totalEfficiencyPerHour = (short)(employeesEfficiency.Sum(x => x));
 
             double timeNeeded = countOfPeople / (1.0 * totalEfficiencyPerHour);
 
-            double restHours = Math.Round(timeNeeded / 4);
+            short restHours = (short)(timeNeeded / 3);
 
             timeNeeded += restHours;
 
