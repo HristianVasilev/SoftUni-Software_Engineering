@@ -20,7 +20,7 @@ namespace _1.NationalCourt
 
             double timeNeeded = countOfPeople / (1.0 * totalEfficiencyPerHour);
 
-            double restHours = timeNeeded / 4.0;
+            double restHours = Math.Round(timeNeeded / 4);
 
             timeNeeded += restHours;
 
