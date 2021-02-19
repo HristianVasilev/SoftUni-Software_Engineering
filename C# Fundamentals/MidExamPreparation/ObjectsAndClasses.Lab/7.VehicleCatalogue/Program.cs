@@ -141,6 +141,5 @@ namespace _7.VehicleCatalogue
 
             return sb.ToString().TrimEnd();
         }
-
     }
 }
