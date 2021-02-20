@@ -59,7 +59,7 @@ namespace _4.Students
 
         public override string ToString()
         {
-            return $"{this.FirstName} {this.LastName} {this.Grade:f2}";
+            return $"{this.FirstName} {this.LastName}: {this.Grade:f2}";
         }
     }
 }
