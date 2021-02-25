@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.FundamentalsMidExamPrep"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.ComputerStore", "1.ComputerStore\1.ComputerStore.csproj", "{51EADF2A-EBCB-4A73-875E-851D7D676F95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.TheLift", "2.TheLift\2.TheLift.csproj", "{BF4DD192-8D09-4F46-936F-818385D35DBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{51EADF2A-EBCB-4A73-875E-851D7D676F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51EADF2A-EBCB-4A73-875E-851D7D676F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51EADF2A-EBCB-4A73-875E-851D7D676F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF4DD192-8D09-4F46-936F-818385D35DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4DD192-8D09-4F46-936F-818385D35DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4DD192-8D09-4F46-936F-818385D35DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4DD192-8D09-4F46-936F-818385D35DBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
