@@ -22,8 +22,6 @@ namespace MidExam6Aug19
 
                 Console.WriteLine($"Collected only {percentage:f2}% of the plunder.");
             }
-
-
         }
 
         private static double GetPlunders(int daysOfPlunder, int dailyPlunder)
