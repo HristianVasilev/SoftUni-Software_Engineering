@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidExam6Aug19", "MidExam6Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.TreasureHunt", "2.TreasureHunt\2.TreasureHunt.csproj", "{BEF3A922-EE94-4841-B52E-4978F08ADFCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.ManOWar", "3.ManOWar\3.ManOWar.csproj", "{23846838-263B-45CA-8069-3B85BF81D92A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BEF3A922-EE94-4841-B52E-4978F08ADFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEF3A922-EE94-4841-B52E-4978F08ADFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEF3A922-EE94-4841-B52E-4978F08ADFCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23846838-263B-45CA-8069-3B85BF81D92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23846838-263B-45CA-8069-3B85BF81D92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23846838-263B-45CA-8069-3B85BF81D92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23846838-263B-45CA-8069-3B85BF81D92A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
