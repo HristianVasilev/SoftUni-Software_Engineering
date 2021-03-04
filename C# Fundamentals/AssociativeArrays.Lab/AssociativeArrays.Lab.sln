@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.OddOccurrences", "2.OddOc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.WordSynonyms", "3.WordSynonyms\3.WordSynonyms.csproj", "{247E005E-EF7D-4B4C-9FDE-862A5160CF1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.Largest3Numbers", "4.Largest3Numbers\4.Largest3Numbers.csproj", "{224158B7-0551-4011-A9EB-5C16585DB107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.WordFilter", "5.WordFilter\5.WordFilter.csproj", "{EB71154C-8FA5-411E-ACF1-C57A0DF63F41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{247E005E-EF7D-4B4C-9FDE-862A5160CF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{247E005E-EF7D-4B4C-9FDE-862A5160CF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{247E005E-EF7D-4B4C-9FDE-862A5160CF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224158B7-0551-4011-A9EB-5C16585DB107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224158B7-0551-4011-A9EB-5C16585DB107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224158B7-0551-4011-A9EB-5C16585DB107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224158B7-0551-4011-A9EB-5C16585DB107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB71154C-8FA5-411E-ACF1-C57A0DF63F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB71154C-8FA5-411E-ACF1-C57A0DF63F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB71154C-8FA5-411E-ACF1-C57A0DF63F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB71154C-8FA5-411E-ACF1-C57A0DF63F41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
