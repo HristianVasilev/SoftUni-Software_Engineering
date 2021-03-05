@@ -29,7 +29,7 @@ namespace _6.Courses
         private static void PrintCourseData()
         {
             var coursesCollection = coursesData.OrderByDescending(x => x.Value.Count).ToDictionary(k => k.Key, v => v.Value);
-            ;
+            
             foreach (KeyValuePair<string, List<string>> course in coursesCollection)
             {
                 string courseName = course.Key;
