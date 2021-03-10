@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace _5.DragonArmy
 {
@@ -27,6 +28,29 @@ namespace _5.DragonArmy
                 AddToDB(type, name, damage, health, armor);
             }
 
+            string result = GetResult();
+            Console.WriteLine(result);
+        }
+
+        private static string GetResult()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var (type, dragons) in db)
+            {
+                double avgDamage = dragons.Average(x => x.Damage);
+                double avgHealth = dragons.Average(x => x.Health);
+                double avgArmor = dragons.Average(x => x.Armor);
+
+                sb.AppendLine($"{type}::({avgDamage:f2}/{avgHealth:f2}/{avgArmor:f2})");
+
+                dragons
+                    .OrderBy(x => x.Name)
+                    .ToList()
+                    .ForEach(d => sb.AppendLine(d.ToString()));
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         private static void AddToDB(string type, string name, int damage, int health, int armor)
@@ -42,9 +66,11 @@ namespace _5.DragonArmy
             {
                 db[type].Add(new Dragon(type, name, damage, health, armor));
             }
-            
+            else
+            {
+                exist.Change(damage, health, armor);
+            }
         }
-
 
 
         private static int ParseOrDefault(string value, int defaultValue)
@@ -74,10 +100,22 @@ namespace _5.DragonArmy
             this.Armor = armor;
         }
 
-        public string Type { get; set; }
-        public string Name { get; set; }
-        public int Damage { get; set; }
-        public int Health { get; set; }
-        public int Armor { get; set; }
+        public string Type { get; }
+        public string Name { get; }
+        public int Damage { get; private set; }
+        public int Health { get; private set; }
+        public int Armor { get; private set; }
+
+        internal void Change(int damage, int health, int armor)
+        {
+            this.Damage = damage;
+            this.Health = health;
+            this.Armor = armor;
+        }
+
+        public override string ToString()
+        {
+            return $"-{this.Name} -> damage: {this.Damage}, health: {this.Health}, armor: {this.Armor}";
+        }
     }
 }
