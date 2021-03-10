@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.MOBAChallenger", "3.MOBAC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.Snowwhite", "4.Snowwhite\4.Snowwhite.csproj", "{6BB53426-73E8-46A8-9A3F-FFD22A10552C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.DragonArmy", "5.DragonArmy\5.DragonArmy.csproj", "{CCEBD36F-DAB7-4A80-837B-6885F0CB85E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6BB53426-73E8-46A8-9A3F-FFD22A10552C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BB53426-73E8-46A8-9A3F-FFD22A10552C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BB53426-73E8-46A8-9A3F-FFD22A10552C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCEBD36F-DAB7-4A80-837B-6885F0CB85E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCEBD36F-DAB7-4A80-837B-6885F0CB85E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCEBD36F-DAB7-4A80-837B-6885F0CB85E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCEBD36F-DAB7-4A80-837B-6885F0CB85E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
