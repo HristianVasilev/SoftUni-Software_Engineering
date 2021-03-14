@@ -17,7 +17,6 @@ namespace _1.ValidUsernames
                 }
             }
         }
-
         private static bool ValidUsername(string username)
         {
             bool betweenRange = username.Length >= 3 && username.Length <= 16;
