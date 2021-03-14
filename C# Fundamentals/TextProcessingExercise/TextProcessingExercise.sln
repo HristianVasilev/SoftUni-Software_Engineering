@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1.ValidUsernames", "1.Valid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.CharacterMultiplier", "2.CharacterMultiplier\2.CharacterMultiplier.csproj", "{38BE4E3C-D32E-40EE-94BD-94741D523C1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.ExtractFile", "3.ExtractFile\3.ExtractFile.csproj", "{4E50F17B-E927-4122-AEEC-D10C90A4933C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.CaesarCipher", "4.CaesarCipher\4.CaesarCipher.csproj", "{06E41DDA-05E4-4628-A732-1D715174D04B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{38BE4E3C-D32E-40EE-94BD-94741D523C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38BE4E3C-D32E-40EE-94BD-94741D523C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38BE4E3C-D32E-40EE-94BD-94741D523C1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E50F17B-E927-4122-AEEC-D10C90A4933C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E50F17B-E927-4122-AEEC-D10C90A4933C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E50F17B-E927-4122-AEEC-D10C90A4933C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E50F17B-E927-4122-AEEC-D10C90A4933C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06E41DDA-05E4-4628-A732-1D715174D04B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E41DDA-05E4-4628-A732-1D715174D04B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E41DDA-05E4-4628-A732-1D715174D04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E41DDA-05E4-4628-A732-1D715174D04B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
