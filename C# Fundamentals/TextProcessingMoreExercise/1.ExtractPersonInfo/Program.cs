@@ -16,7 +16,7 @@ namespace _1.ExtractPersonInfo
                 string name = stringLine
                     .First(x => x.Any(c => c == '@') && x.Any(c => c == '|'))
                     .Trim(new char[] { '@', '|' });
-                
+
                 string age = stringLine
                     .First(x => x.Any(c => c == '#') && x.Any(c => c == '*'))
                     .Trim(new char[] { '#', '*' });

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.ExtractPersonInfo", "1.ExtractPersonInfo\1.ExtractPersonInfo.csproj", "{83598EF9-9388-4F52-B8BB-0BA9377A4205}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.AsciiSumator", "2.AsciiSumator\2.AsciiSumator.csproj", "{BA27FD91-7995-4069-94AE-BF7B3E3DCE18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{83598EF9-9388-4F52-B8BB-0BA9377A4205}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83598EF9-9388-4F52-B8BB-0BA9377A4205}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83598EF9-9388-4F52-B8BB-0BA9377A4205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA27FD91-7995-4069-94AE-BF7B3E3DCE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA27FD91-7995-4069-94AE-BF7B3E3DCE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA27FD91-7995-4069-94AE-BF7B3E3DCE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA27FD91-7995-4069-94AE-BF7B3E3DCE18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
