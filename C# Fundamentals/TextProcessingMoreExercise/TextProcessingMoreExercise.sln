@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.TreasureFinder", "3.Treas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.MorseCodeTranslator", "4.MorseCodeTranslator\4.MorseCodeTranslator.csproj", "{B7DCCE0B-F1C1-46F2-BB2F-4798E58A6689}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.HTML", "5.HTML\5.HTML.csproj", "{59DB0199-EFFB-4B0A-BB69-B0E6D8CE1BD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B7DCCE0B-F1C1-46F2-BB2F-4798E58A6689}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7DCCE0B-F1C1-46F2-BB2F-4798E58A6689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7DCCE0B-F1C1-46F2-BB2F-4798E58A6689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DB0199-EFFB-4B0A-BB69-B0E6D8CE1BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DB0199-EFFB-4B0A-BB69-B0E6D8CE1BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DB0199-EFFB-4B0A-BB69-B0E6D8CE1BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DB0199-EFFB-4B0A-BB69-B0E6D8CE1BD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
