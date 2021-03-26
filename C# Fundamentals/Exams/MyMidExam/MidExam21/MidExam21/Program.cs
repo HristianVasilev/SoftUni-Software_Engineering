@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MidExam21
+namespace Problem1
 {
     class Program
     {
