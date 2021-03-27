@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -9,72 +7,52 @@ namespace Problem2.EmojiDetector
 {
     class Program
     {
-        private static StringBuilder sb;
-
         static void Main(string[] args)
         {
-            sb = new StringBuilder();
-
             string input = Console.ReadLine();
 
-            BigInteger coolThresHold = ThresHold(input);
-
-            List<string> emojis = Emojis(input, coolThresHold);
-
-            GetEmojisResult(emojis);
-            Console.WriteLine(sb.ToString().TrimEnd());
+            long coolThresHold = CalculateThresHold(input);
+            Console.WriteLine($"Cool threshold: {coolThresHold}");
+            string emojisInfo = Emojis(input, coolThresHold);
+            Console.WriteLine(emojisInfo);
         }
 
-        private static void GetEmojisResult(List<string> emojis)
-        {
-            if (emojis.Count == 0)
-            {
-                return;
-            }
-
-            foreach (var item in emojis)
-            {
-                sb.AppendLine(item);
-            }
-        }
-
-        private static BigInteger ThresHold(string input)
+        private static long CalculateThresHold(string input)
         {
             string pattern = @"\d";
             MatchCollection collection = Regex.Matches(input, pattern);
 
-            BigInteger result = 1;
+            long result = 1;
             foreach (Match item in collection)
             {
                 result *= byte.Parse(item.Value);
             }
 
-            sb.AppendLine($"Cool threshold: {result}");
             return result;
         }
 
-        private static List<string> Emojis(string input, BigInteger coolThresHold)
+        private static string Emojis(string input, long coolThresHold)
         {
-            List<string> emojis = new List<string>();
+            StringBuilder sb = new StringBuilder();
 
-            string pattern = @"((:|\*){2})([A-Z][a-z]{2,})\1";
+            string pattern = @"(::|\*\*)([A-Z][a-z]{2,})\1";
             MatchCollection collection = Regex.Matches(input, pattern);
 
-            sb.AppendLine($"{collection.Count} emojis found in the text. The cool ones are:");
+            sb.AppendLine(($"{collection.Count} emojis found in the text. The cool ones are:"));
 
             foreach (Match item in collection)
             {
-                string core = item.Groups[3].Value;
+                string core = item.Groups[2].Value;
 
-                BigInteger sum = core.Sum(c => c);
+                long sum = core.Sum(c => c);
 
-                if (sum >= coolThresHold)
+                if (sum > coolThresHold)
                 {
-                    emojis.Add(item.Value);
+                    sb.AppendLine(item.Value);
                 }
             }
 
-            return emojis;
+            return sb.ToString().TrimEnd();
         }
     }
 }
