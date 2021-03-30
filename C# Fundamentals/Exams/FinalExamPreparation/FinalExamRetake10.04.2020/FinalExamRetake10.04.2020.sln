@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem1.Secret Chat", "Pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem2.Mirror words", "Problem2.Mirror words\Problem2.Mirror words.csproj", "{F117E5C8-16DB-409D-B114-C8A6AC091078}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem3.NeedForSpeedIII", "Problem3.NeedForSpeedIII\Problem3.NeedForSpeedIII.csproj", "{79134F44-5BF7-43BB-B5A9-72925495FDBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F117E5C8-16DB-409D-B114-C8A6AC091078}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F117E5C8-16DB-409D-B114-C8A6AC091078}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F117E5C8-16DB-409D-B114-C8A6AC091078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79134F44-5BF7-43BB-B5A9-72925495FDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79134F44-5BF7-43BB-B5A9-72925495FDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79134F44-5BF7-43BB-B5A9-72925495FDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79134F44-5BF7-43BB-B5A9-72925495FDBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
