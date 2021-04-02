@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem1.PasswordReset", "Problem1.PasswordReset\Problem1.PasswordReset.csproj", "{5E14FE8A-4A72-4A1B-82F2-9006926A4D42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.FancyBarcodes", "02.FancyBarcodes\02.FancyBarcodes.csproj", "{8848C876-905A-4D67-86DE-63AC7F266C31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem3.HeroesOfCodeAndLogicVII", "Problem3.HeroesOfCodeAndLogicVII\Problem3.HeroesOfCodeAndLogicVII.csproj", "{97456570-FABC-485D-96CC-33916F5170AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5E14FE8A-4A72-4A1B-82F2-9006926A4D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E14FE8A-4A72-4A1B-82F2-9006926A4D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E14FE8A-4A72-4A1B-82F2-9006926A4D42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8848C876-905A-4D67-86DE-63AC7F266C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8848C876-905A-4D67-86DE-63AC7F266C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8848C876-905A-4D67-86DE-63AC7F266C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8848C876-905A-4D67-86DE-63AC7F266C31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97456570-FABC-485D-96CC-33916F5170AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97456570-FABC-485D-96CC-33916F5170AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97456570-FABC-485D-96CC-33916F5170AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97456570-FABC-485D-96CC-33916F5170AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
