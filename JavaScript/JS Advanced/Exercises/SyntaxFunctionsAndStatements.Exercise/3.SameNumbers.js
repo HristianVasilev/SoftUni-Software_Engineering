@@ -13,7 +13,7 @@ function Check(number) {
             isEqual = false;
         }
 
-        number = Math.floor(number/10);
+        number = Math.floor(number / 10);
     }
 
     console.log(isEqual);
@@ -22,3 +22,24 @@ function Check(number) {
 
 Check(2222222);
 Check(1234);
+
+function CheckSecond(input) {
+    input = input.toString();
+
+    let isEqual = true;
+    let sum = Number(input[0]);
+
+    for (let i = 1; i < input.length; i++) {
+        if (input[i] != input[i - 1]) {
+            isEqual = false;
+        }
+
+        sum += Number(input[i]);
+    }
+
+    console.log(isEqual);
+    console.log(sum);
+}
+
+CheckSecond(2222222);
+CheckSecond(1234);
