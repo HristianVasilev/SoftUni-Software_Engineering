@@ -1,0 +1,1 @@
+FOR /D /R %%G in (obj,bin) DO @IF EXIST %%G IF %%~aG geq d RMDIR /S /Q "%%G"
