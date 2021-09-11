@@ -60,7 +60,15 @@ namespace _01.Red_Black_Tree
 
         public void DeleteMax()
         {
+            if (this.root == default)
+            {
+                return;
+            }
+
+            this.root = DeleteMax(this.root);
         }
+
+
 
         public IEnumerable<T> Range(T startRange, T endRange)
         {
@@ -71,8 +79,6 @@ namespace _01.Red_Black_Tree
         {
             this.root = this.Delete(this.root, element);
         }
-
-
 
         public T Ceiling(T element)
         {
@@ -93,8 +99,6 @@ namespace _01.Red_Black_Tree
 
             return this.Floor(this.root, element);
         }
-
-
 
         public void EachInOrder(Action<T> action)
         {
@@ -271,7 +275,17 @@ namespace _01.Red_Black_Tree
             return node;
         }
 
+        private Node DeleteMax(Node node)
+        {
+            if (node.Right == default)
+            {
+                return node.Left;
+            }
 
+            node.Right = this.DeleteMax(node.Right);
+            node.Count = this.CountNodes(node);
+            return node;
+        }
         private Node DeleteMin(Node node)
         {
             if (node.Left == default)
