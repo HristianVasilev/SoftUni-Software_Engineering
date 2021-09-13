@@ -286,6 +286,7 @@ namespace _01.Red_Black_Tree
             node.Count = this.CountNodes(node);
             return node;
         }
+
         private Node DeleteMin(Node node)
         {
             if (node.Left == default)
