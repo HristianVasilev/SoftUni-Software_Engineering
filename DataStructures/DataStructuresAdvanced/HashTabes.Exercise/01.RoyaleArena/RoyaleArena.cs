@@ -6,6 +6,17 @@ namespace _01.RoyaleArena
 
     public class RoyaleArena : IArena
     {
+        private const int capacity = 8;
+
+        private LinkedList<BattleCard>[] slots;
+
+
+        public RoyaleArena() : this(capacity) { }
+
+        public RoyaleArena(int capacity)
+        {
+            this.slots = new LinkedList<BattleCard>[capacity];
+        }
 
         public void Add(BattleCard card)
         {
