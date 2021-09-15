@@ -79,18 +79,21 @@
             get
             {
                 // Note: throw an exception on missing key
-                KeyValue<TKey, TValue> result = this.Find(key);
-                if (result == default)
-                {
-                    throw new ArgumentNullException();
-                }
+                KeyValue<TKey, TValue> keyValue = this.Find(key);
+                if (keyValue == default) throw new KeyNotFoundException();
 
-                return result.Value;
+                return keyValue.Value;
             }
             set
             {
-                KeyValue<TKey, TValue> result = this.Find(key);
-                result.Value = value;
+                KeyValue<TKey, TValue> keyValue = this.Find(key);
+                if (keyValue == default)
+                {
+                    this.Add(key, value);
+                    return;
+                }
+
+                keyValue.Value = value;
             }
         }
 
@@ -127,22 +130,21 @@
         {
             int slotNumber = this.FindSlotNumber(key);
 
-            if (this.slots[slotNumber] == default) return false;
+            if (this.slots[slotNumber] == null) return false;
 
             KeyValue<TKey, TValue> target = default;
-            bool targetExists = false;
+
             foreach (var element in this.slots[slotNumber])
             {
                 if (element.Key.Equals(key))
                 {
                     target = element;
-                    targetExists = true;
-                    this.Count--;
                     break;
                 }
             }
 
-            this.slots[slotNumber].Remove(target);
+            bool targetExists = this.slots[slotNumber].Remove(target);
+            if (targetExists) this.Count--;
 
             return targetExists;
         }
@@ -157,7 +159,19 @@
         {
             get
             {
-                throw new NotImplementedException();
+                List<TKey> keys = new List<TKey>();
+
+                foreach (var slot in this.slots)
+                {
+                    if (slot == default) continue;
+
+                    foreach (var item in slot)
+                    {
+                        keys.Add(item.Key);
+                    }
+                }
+
+                return keys;
             }
         }
 
@@ -165,7 +179,19 @@
         {
             get
             {
-                throw new NotImplementedException();
+                List<TValue> values = new List<TValue>();
+
+                foreach (var slot in this.slots)
+                {
+                    if (slot == default) continue;
+
+                    foreach (var item in slot)
+                    {
+                        values.Add(item.Value);
+                    }
+                }
+
+                return values;
             }
         }
 
@@ -203,7 +229,7 @@
                 slots[slotNumber] = new LinkedList<KeyValue<TKey, TValue>>();
             }
 
-            CheckForDuplicates(key, slotNumber, slots);
+            CheckForDuplicates(key, slots[slotNumber]);
 
             KeyValue<TKey, TValue> newElement = new KeyValue<TKey, TValue>(key, value);
             slots[slotNumber].AddLast(newElement);
@@ -231,9 +257,9 @@
             this.slots = resizedSlot;
         }
 
-        private void CheckForDuplicates(TKey key, int slotNumber, LinkedList<KeyValue<TKey, TValue>>[] slots)
+        private void CheckForDuplicates(TKey key, LinkedList<KeyValue<TKey, TValue>> slot)
         {
-            foreach (var element in slots[slotNumber])
+            foreach (var element in slot)
             {
                 if (element.Key.Equals(key))
                 {

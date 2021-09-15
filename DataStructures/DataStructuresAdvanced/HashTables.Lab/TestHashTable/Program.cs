@@ -1,26 +1,30 @@
 ﻿namespace TestHashTable
 {
+    using HashTable;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
 
     class Program
     {
         static void Main(string[] args)
         {
-            Student a = new Student(4);
-            Student b = new Student(3);
-            Student c = new Student(3);
+            HashTable<string, int> hashTable = new HashTable<string, int>();
+            List<string> keys = new List<string>();
+            int count = 5000;
+            for (int i = 0; i < count; i++)
+            {
+                string key = Guid.NewGuid().ToString();
+                keys.Add(key);
+                hashTable.Add(key, i);
+            }
 
-            IEqualityComparer<Student> comparer = new StudentComparer();
-            HashSet<Student> students = new HashSet<Student>(comparer);
-
-
-            students.Add(a);
-            students.Add(b);
-            students.Add(c);
-
-            Console.WriteLine(students.Count);
+            Console.WriteLine($"Keys count: {hashTable.Keys.Count()}");
+            //foreach (var item in x)
+            //{
+            //    if (item == 0) Console.WriteLine("Empty");
+            //}
 
         }
     }

@@ -349,7 +349,7 @@ namespace HashTable.Tests
             Assert.AreEqual(count, hashTable.Count);
 
             // Act & Assert
-            keys.Reverse();
+           // keys.Reverse();
             foreach (string key in keys)
             {
                 hashTable.Remove(key);
