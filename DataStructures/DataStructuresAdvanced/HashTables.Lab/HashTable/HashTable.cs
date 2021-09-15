@@ -149,7 +149,8 @@
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            this.slots = new LinkedList<KeyValue<TKey, TValue>>[defaultCapacity];
+            this.Count = 0;
         }
 
         public IEnumerable<TKey> Keys
