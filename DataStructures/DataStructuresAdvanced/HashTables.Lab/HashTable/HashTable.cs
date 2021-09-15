@@ -7,15 +7,15 @@
 
     public class HashTable<TKey, TValue> : IEnumerable<KeyValue<TKey, TValue>>
     {
-        private const int capacity = 8;
-        private const int factor = 75;
+        private const int defaultCapacity = 8;
+        private const int fillFactor = 75;
 
         private LinkedList<KeyValue<TKey, TValue>>[] slots;
-        private int fillFactor => this.CalculateFillFactor();
+        private int currentFillFactor => this.CalculateFillFactor();
 
 
 
-        public HashTable() : this(capacity) { }
+        public HashTable() : this(defaultCapacity) { }
 
         public HashTable(int capacity)
         {
@@ -201,10 +201,10 @@
 
         private void GrowIfNeeded()
         {
-            if (this.fillFactor < factor) return;
+            if (this.currentFillFactor < fillFactor) return;
 
             LinkedList<KeyValue<TKey, TValue>>[] resizedSlot
-                = new LinkedList<KeyValue<TKey, TValue>>[capacity * 2];
+                = new LinkedList<KeyValue<TKey, TValue>>[this.Capacity * 2];
             this.Count = 0;
 
             for (int i = 0; i < this.slots.Length; i++)
@@ -243,7 +243,7 @@
 
         private int CalculateFillFactor()
         {
-            return (int)(((double)this.Count / (double)this.Capacity) * 100);
+            return (int)(((double)(this.Count + 1) / this.Capacity) * 100);
         }
     }
 }
