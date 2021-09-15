@@ -96,7 +96,17 @@
 
         public bool TryGetValue(TKey key, out TValue value)
         {
-            throw new NotImplementedException();
+            try
+            {
+                value = this.Get(key);
+                return true;
+            }
+            catch (KeyNotFoundException)
+            {
+                value = default;
+            }
+
+            return false;
         }
 
         public KeyValue<TKey, TValue> Find(TKey key)
