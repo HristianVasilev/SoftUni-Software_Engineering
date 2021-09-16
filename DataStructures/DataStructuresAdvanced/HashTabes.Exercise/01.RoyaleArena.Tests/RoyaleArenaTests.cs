@@ -231,7 +231,8 @@ namespace _01.RoyaleArena.Tests
             RA.Add(cd4);
             RA.Add(cd5);
             //Assert
-            IEnumerable<BattleCard> battlecards = RA.GetByTypeAndDamageRangeOrderedByDamageThenById(CardType.SPELL, 0, 20);
+            IEnumerable<BattleCard> battlecards 
+                = RA.GetByTypeAndDamageRangeOrderedByDamageThenById(CardType.SPELL, 0, 20);
             List<BattleCard> actual = new List<BattleCard>();
             foreach (var b in battlecards) 
             {
@@ -281,6 +282,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd3 = new BattleCard(3, CardType.SPELL, "valq", 15.6, 12);
             BattleCard cd4 = new BattleCard(4, CardType.SPELL, "valq", 15.6, 61);
             BattleCard cd5 = new BattleCard(8, CardType.SPELL, "valq", 17.8, 13);
+
             List<BattleCard> expected = new List<BattleCard>() {cd3, cd4, cd2, cd1};
 
             //Act
