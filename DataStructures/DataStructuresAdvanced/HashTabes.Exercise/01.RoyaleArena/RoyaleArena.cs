@@ -79,7 +79,11 @@ namespace _01.RoyaleArena
 
             foreach (var item in this.slots[slotNumber])
             {
-                if (item.Id.Equals(id)) this.slots[slotNumber].Remove(item);
+                if (item.Id.Equals(id))
+                {
+                    this.slots[slotNumber].Remove(item);
+                    break;
+                }
             }
         }
 
