@@ -309,6 +309,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd3 = new BattleCard(4, CardType.SPELL, "valq", 4, 15.6);
             BattleCard cd4 = new BattleCard(3, CardType.SPELL, "valq", 3, 15.6);
             BattleCard cd5 = new BattleCard(8, CardType.RANGED, "valq", 8, 17.8);
+
             List<BattleCard> expected = new List<BattleCard>() {cd3, cd2, cd1};
 
             //Act

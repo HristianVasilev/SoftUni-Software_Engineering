@@ -52,7 +52,7 @@ namespace _01.RoyaleArena
 
         public override int GetHashCode()
         {
-            return this.Id;
+            return this.Id.GetHashCode();
         }
     }
 }
