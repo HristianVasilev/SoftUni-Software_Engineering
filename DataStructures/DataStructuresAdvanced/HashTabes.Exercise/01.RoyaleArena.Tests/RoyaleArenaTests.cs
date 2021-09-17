@@ -3,21 +3,39 @@ namespace _01.RoyaleArena.Tests
     using System;
     using System.Collections.Generic;
     using NUnit.Framework;
-    using  _01.RoyaleArena;
+    using _01.RoyaleArena;
 
     public class RoyaleArenaTests
     {
         [Test]
-        public void Add_SingleElement_ShouldWorkCorrectly() {
+        public void Add_SingleElement_ShouldWorkCorrectly()
+        {
             IArena RA = new RoyaleArena();
             BattleCard cd = new BattleCard(5, CardType.SPELL, "joro", 5, 5);
             RA.Add(cd);
 
             //Assert
-            foreach (var bc in RA) 
+            foreach (var bc in RA)
             {
                 Assert.AreEqual(bc, cd);
             }
+        }
+
+        [Test]
+        public void Add_500Elements_ShouldWorkCorrectly()
+        {
+            RoyaleArena arena = new RoyaleArena();
+
+            Random random = new Random();
+            for (int i = 0; i < 500; i++)
+            {
+                CardType type = (CardType)random.Next(0, 3);
+                BattleCard battleCard = new BattleCard(i, type, i.ToString(), i + 10, i + 20);
+                arena.Add(battleCard);
+            }
+
+            Assert.AreEqual(500, arena.Count);
+            Assert.AreEqual(1024, arena.Capacity);
         }
 
         [Test]
@@ -109,7 +127,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd1 = new BattleCard(5, CardType.SPELL, "joro", 5, 5);
             BattleCard cd2 = new BattleCard(6, CardType.SPELL, "joro", 6, 5);
             BattleCard cd3 = new BattleCard(7, CardType.SPELL, "joro", 7, 5);
-            List<BattleCard> expected = new List<BattleCard>() {cd1,cd3,cd2};
+            List<BattleCard> expected = new List<BattleCard>() { cd1, cd3, cd2 };
 
             //Act
             RA.Add(cd1);
@@ -118,7 +136,7 @@ namespace _01.RoyaleArena.Tests
 
             List<BattleCard> actual = new List<BattleCard>();
 
-            foreach (BattleCard battlecard in RA) 
+            foreach (BattleCard battlecard in RA)
             {
                 actual.Add(battlecard);
             }
@@ -128,13 +146,14 @@ namespace _01.RoyaleArena.Tests
         }
 
         [Test]
-        public void RA_ShouldReturn_BattlecardsInCorrectOrder_AfterDelete() {
+        public void RA_ShouldReturn_BattlecardsInCorrectOrder_AfterDelete()
+        {
             //Arrange
             IArena RA = new RoyaleArena();
             BattleCard cd1 = new BattleCard(5, CardType.SPELL, "joro", 10, 5);
             BattleCard cd2 = new BattleCard(6, CardType.SPELL, "joro", 11, 5);
             BattleCard cd3 = new BattleCard(7, CardType.SPELL, "joro", 12, 5);
-            List<BattleCard> expected = new List<BattleCard>() {cd2} ;
+            List<BattleCard> expected = new List<BattleCard>() { cd2 };
 
             //Act
             RA.Add(cd1);
@@ -143,7 +162,7 @@ namespace _01.RoyaleArena.Tests
             RA.RemoveById(5);
             RA.RemoveById(7);
             List<BattleCard> actual = new List<BattleCard>();
-            foreach (BattleCard battlecard in RA) 
+            foreach (BattleCard battlecard in RA)
             {
                 actual.Add(battlecard);
             }
@@ -162,7 +181,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd3 = new BattleCard(7, CardType.SPELL, "maga", 6, 5.5);
             BattleCard cd4 = new BattleCard(12, CardType.SPELL, "shuba", 5, 15.6);
             BattleCard cd5 = new BattleCard(15, CardType.SPELL, "tanuki", 5, 7.8);
-            List<BattleCard> expected = new List<BattleCard>() {cd5, cd4};
+            List<BattleCard> expected = new List<BattleCard>() { cd5, cd4 };
 
             //Act
             RA.Add(cd1);
@@ -173,7 +192,7 @@ namespace _01.RoyaleArena.Tests
             IEnumerable<BattleCard> battlecards = RA.GetAllInSwagRange(7, 16);
             List<BattleCard> actual = new List<BattleCard>();
 
-            foreach (var b in battlecards) 
+            foreach (var b in battlecards)
             {
                 actual.Add(b);
             }
@@ -192,7 +211,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd3 = new BattleCard(7, CardType.SPELL, "joro", 11.0, 5.5);
             BattleCard cd4 = new BattleCard(12, CardType.BUILDING, "joro", 12.0, 15.6);
             BattleCard cd5 = new BattleCard(15, CardType.BUILDING, "moro", 13.0, 7.8);
-            List<BattleCard> expected = new List<BattleCard>() {cd1,cd2,cd3,cd5};
+            List<BattleCard> expected = new List<BattleCard>() { cd1, cd2, cd3, cd5 };
 
             //Act
             RA.Add(cd1);
@@ -203,7 +222,7 @@ namespace _01.RoyaleArena.Tests
             IEnumerable<BattleCard> battlecards = RA.FindFirstLeastSwag(4);
 
             List<BattleCard> actual = new List<BattleCard>();
-            foreach (var b in battlecards) 
+            foreach (var b in battlecards)
             {
                 actual.Add(b);
             }
@@ -222,7 +241,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd3 = new BattleCard(7, CardType.SPELL, "joro", 5.5, 7);
             BattleCard cd4 = new BattleCard(12, CardType.SPELL, "joro", 15.6, 10);
             BattleCard cd5 = new BattleCard(15, CardType.RANGED, "joro", 7.8, 6);
-            List<BattleCard> expected = new List<BattleCard>() {cd4, cd2, cd3, cd1};
+            List<BattleCard> expected = new List<BattleCard>() { cd4, cd2, cd3, cd1 };
 
             //Act
             RA.Add(cd1);
@@ -231,10 +250,10 @@ namespace _01.RoyaleArena.Tests
             RA.Add(cd4);
             RA.Add(cd5);
             //Assert
-            IEnumerable<BattleCard> battlecards 
+            IEnumerable<BattleCard> battlecards
                 = RA.GetByTypeAndDamageRangeOrderedByDamageThenById(CardType.SPELL, 0, 20);
             List<BattleCard> actual = new List<BattleCard>();
-            foreach (var b in battlecards) 
+            foreach (var b in battlecards)
             {
                 actual.Add(b);
             }
@@ -251,7 +270,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd3 = new BattleCard(4, CardType.SPELL, "joro", 7, 15.6);
             BattleCard cd4 = new BattleCard(3, CardType.SPELL, "joro", 8, 15.6);
             BattleCard cd5 = new BattleCard(8, CardType.RANGED, "joro", 11, 17.8);
-            List<BattleCard> expected = new List<BattleCard>() {cd5, cd4, cd3, cd2, cd1};
+            List<BattleCard> expected = new List<BattleCard>() { cd5, cd4, cd3, cd2, cd1 };
 
             //Act
             RA.Add(cd1);
@@ -283,7 +302,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd4 = new BattleCard(4, CardType.SPELL, "valq", 15.6, 61);
             BattleCard cd5 = new BattleCard(8, CardType.SPELL, "valq", 17.8, 13);
 
-            List<BattleCard> expected = new List<BattleCard>() {cd3, cd4, cd2, cd1};
+            List<BattleCard> expected = new List<BattleCard>() { cd3, cd4, cd2, cd1 };
 
             //Act
             RA.Add(cd1);
@@ -303,7 +322,8 @@ namespace _01.RoyaleArena.Tests
         }
 
         [Test]
-        public void GetByCardType_ShouldReturnCorrectResultAfterRemove() {
+        public void GetByCardType_ShouldReturnCorrectResultAfterRemove()
+        {
             //Arrange
             IArena RA = new RoyaleArena();
             BattleCard cd1 = new BattleCard(2, CardType.SPELL, "valq", 2, 14.8);
@@ -312,7 +332,7 @@ namespace _01.RoyaleArena.Tests
             BattleCard cd4 = new BattleCard(3, CardType.SPELL, "valq", 3, 15.6);
             BattleCard cd5 = new BattleCard(8, CardType.RANGED, "valq", 8, 17.8);
 
-            List<BattleCard> expected = new List<BattleCard>() {cd3, cd2, cd1};
+            List<BattleCard> expected = new List<BattleCard>() { cd3, cd2, cd1 };
 
             //Act
             RA.Add(cd1);
