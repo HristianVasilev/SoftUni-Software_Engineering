@@ -26,5 +26,23 @@
         public DateTime IssueDate { get; set; }
 
         public DateTime DueDate { get; set; }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+
+            Invoice other = (Invoice)obj;
+
+            return this.SerialNumber == other.SerialNumber
+                && this.CompanyName == other.CompanyName
+                && this.Subtotal == other.Subtotal
+                && this.Department == other.Department
+                && this.IssueDate == other.IssueDate
+                && this.DueDate == other.DueDate;
+        }
     }
 }
