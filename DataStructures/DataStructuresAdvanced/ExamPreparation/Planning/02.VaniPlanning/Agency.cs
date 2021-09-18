@@ -7,21 +7,21 @@
     public class Agency : IAgency
     {
         private IDictionary<string, Invoice> invoices;
-        private IDictionary<DateTime, ISet<string>> invoicesByIssueDate;
-        private IDictionary<DateTime, ISet<string>> invoicesByDueDate;
-        private IDictionary<Department, ISet<string>> invoicesByDepartment;
-        private IDictionary<string, ISet<string>> invoicesByCompany;
-        private ISet<string> paidInvoices;
+        //  private IDictionary<DateTime, ISet<string>> invoicesByIssueDate;
+        // private IDictionary<DateTime, ISet<string>> invoicesByDueDate;
+        // private IDictionary<Department, ISet<string>> invoicesByDepartment;
+        // private IDictionary<string, ISet<string>> invoicesByCompany;
+        //  private ISet<string> paidInvoices;
 
 
         public Agency()
         {
             this.invoices = new Dictionary<string, Invoice>();
-            this.invoicesByIssueDate = new SortedDictionary<DateTime, ISet<string>>();
-            this.invoicesByDueDate = new Dictionary<DateTime, ISet<string>>();
-            this.invoicesByDepartment = new Dictionary<Department, ISet<string>>();
-            this.invoicesByCompany = new Dictionary<string, ISet<string>>();
-            this.paidInvoices = new SortedSet<string>();
+            //  this.invoicesByIssueDate = new SortedDictionary<DateTime, ISet<string>>();
+            // this.invoicesByDueDate = new Dictionary<DateTime, ISet<string>>();
+            //  this.invoicesByDepartment = new Dictionary<Department, ISet<string>>();
+            //  this.invoicesByCompany = new Dictionary<string, ISet<string>>();
+            //  this.paidInvoices = new SortedSet<string>();
         }
 
 
@@ -42,14 +42,18 @@
 
         public void ThrowPayed()
         {
-            string[] keys = this.paidInvoices.ToArray();       
+            //string[] keys = this.paidInvoices.ToArray();
+            string[] keys = this.invoices
+                .Where(x => x.Value.Subtotal == 0)
+                .Select(k => k.Key)
+                .ToArray();
 
             foreach (var serialNumber in keys)
             {
                 this.Remove(serialNumber);
             }
 
-            this.paidInvoices.Clear();
+            // this.paidInvoices.Clear();
         }
 
         public int Count()
@@ -64,31 +68,45 @@
 
         public void PayInvoice(DateTime due)
         {
-            if (!this.invoicesByDueDate.ContainsKey(due))
-            {
+            //if (!this.invoicesByDueDate.ContainsKey(due.Date))
+            //    throw new ArgumentException();
+
+            //var filteredSerialNumbers = this.invoicesByDueDate[due.Date];
+
+            //foreach (var serialNumber in filteredSerialNumbers)
+            //{
+            //    Invoice invoice = this.invoices[serialNumber];
+            //    invoice.Subtotal = 0;
+            //}
+
+            IEnumerable<Invoice> filteredInvoices = this.invoices.Values
+                .Where(i => i.DueDate.Date == due.Date);
+
+            if (filteredInvoices.Count() == 0)
                 throw new ArgumentException();
-            }
 
-            var filteredSerialNumbers = this.invoicesByDueDate[due];
-
-            foreach (var serialNumber in filteredSerialNumbers)
+            foreach (var invoice in filteredInvoices)
             {
-                Invoice invoice = this.invoices[serialNumber];
                 invoice.Subtotal = 0;
-                this.CheckIfPaid(invoice);
             }
         }
 
         public IEnumerable<Invoice> GetAllInvoiceInPeriod(DateTime start, DateTime end)
         {
-            IEnumerable<string> filteredInvoicesSerialNumbers = this.invoicesByIssueDate
-                .Where(k => k.Key >= start && k.Key <= end)
-                .SelectMany(v => v.Value);
+            //IEnumerable<string> filteredInvoicesSerialNumbers = this.invoicesByIssueDate
+            //    .Where(k => k.Key >= start && k.Key <= end)
+            //    .SelectMany(v => v.Value);
 
-            if (filteredInvoicesSerialNumbers.Count() == 0) return Enumerable.Empty<Invoice>();
+            //if (filteredInvoicesSerialNumbers.Count() == 0) return Enumerable.Empty<Invoice>();
 
-            ICollection<Invoice> filteredInvoices = this.GetInvoicesBySerialNumber(filteredInvoicesSerialNumbers);
-            return filteredInvoices;//.OrderBy(x =>x.IssueDate).ThenBy(x => x.DueDate);
+            //ICollection<Invoice> filteredInvoices = this.GetInvoicesBySerialNumber(filteredInvoicesSerialNumbers);
+            //return filteredInvoices;
+
+            IEnumerable<Invoice> filteredInvoices = this.invoices.Values
+                .Where(i => i.IssueDate.Date >= start.Date && i.IssueDate.Date <= end.Date)
+                .OrderBy(i => i.IssueDate.Date).ThenBy(i => i.DueDate.Date);
+
+            return filteredInvoices;
         }
 
         public IEnumerable<Invoice> SearchBySerialNumber(string serialNumber)
@@ -109,22 +127,27 @@
 
         public IEnumerable<Invoice> ThrowInvoiceInPeriod(DateTime start, DateTime end)
         {
-            string[] filteredInvoicesSerialNumbers = this.invoicesByDueDate
-                .Where(k => k.Key > start && k.Key < end)
-                .SelectMany(v => v.Value)
-                .ToArray();
+            //string[] filteredInvoicesSerialNumbers = this.invoicesByDueDate
+            //    .Where(k => k.Key > start && k.Key < end)
+            //    .SelectMany(v => v.Value)
+            //    .ToArray();
 
-            if (filteredInvoicesSerialNumbers.Count() == 0)
-            {
+            //if (filteredInvoicesSerialNumbers.Count() == 0)
+            //    throw new ArgumentException();
+
+            //ICollection<Invoice> invoices
+            //    = this.GetInvoicesBySerialNumber(filteredInvoicesSerialNumbers);
+
+            Invoice[] invoices = this.invoices.Values
+             .Where(i => i.DueDate.Date > start.Date && i.DueDate.Date < end.Date)
+             .ToArray();
+
+            if (invoices.Length == 0)
                 throw new ArgumentException();
-            }
 
-            ICollection<Invoice> invoices
-                = this.GetInvoicesBySerialNumber(filteredInvoicesSerialNumbers);
-
-            foreach (var number in filteredInvoicesSerialNumbers)
+            foreach (var invoice in invoices)
             {
-                this.Remove(number);
+                this.Remove(invoice.SerialNumber);
             }
 
             return invoices;
@@ -132,44 +155,59 @@
 
         public IEnumerable<Invoice> GetAllFromDepartment(Department department)
         {
-            if (!this.invoicesByDepartment.ContainsKey(department))
-            {
-                return Enumerable.Empty<Invoice>();
-            }
+            //if (!this.invoicesByDepartment.ContainsKey(department))
+            //{
+            //    return Enumerable.Empty<Invoice>();
+            //}
 
-            ISet<string> keys = this.invoicesByDepartment[department];
+            //ISet<string> keys = this.invoicesByDepartment[department];
 
-            ICollection<Invoice> invoices = this.GetInvoicesBySerialNumber(keys);
+            //ICollection<Invoice> invoices = this.GetInvoicesBySerialNumber(keys);
 
-            return invoices.OrderByDescending(x => x.Subtotal).ThenBy(x => x.IssueDate);
+            //return invoices.OrderByDescending(x => x.Subtotal).ThenBy(x => x.IssueDate);
+
+            return this.invoices.Values
+                  .Where(i => i.Department.Equals(department))
+                  .OrderByDescending(i => i.Subtotal)
+                  .ThenBy(i => i.IssueDate);
         }
 
         public IEnumerable<Invoice> GetAllByCompany(string company)
         {
-            if (!this.invoicesByCompany.ContainsKey(company))
-            {
-                return Enumerable.Empty<Invoice>();
-            }
+            //if (!this.invoicesByCompany.ContainsKey(company))
+            //    return Enumerable.Empty<Invoice>();
 
-            IEnumerable<string> keys = this.invoicesByCompany[company].Reverse();
+            //IEnumerable<string> keys = this.invoicesByCompany[company].Reverse();
 
-            ICollection<Invoice> invoices = this.GetInvoicesBySerialNumber(keys);
-            return invoices;
+            //ICollection<Invoice> invoices = this.GetInvoicesBySerialNumber(keys);
+            return this.invoices.Values
+                .Where(x => x.CompanyName == company)
+                .OrderByDescending(x => x.SerialNumber);
         }
 
         public void ExtendDeadline(DateTime dueDate, int days)
         {
-            if (!this.invoicesByDueDate.ContainsKey(dueDate))
-            {
+            //if (!this.invoicesByDueDate.ContainsKey(dueDate))
+            //    throw new ArgumentException();
+
+            //ISet<string> keys = this.invoicesByDueDate[dueDate];
+
+            //foreach (var key in keys)
+            //{
+            //    this.invoices[key].DueDate = this.invoices[key].DueDate.AddDays(days);
+            //}
+
+            IEnumerable<Invoice> filteredInvoices = this.invoices.Values
+                .Where(i => i.DueDate.Date.Equals(dueDate.Date));
+
+            if (filteredInvoices.Count() == 0)
                 throw new ArgumentException();
-            }
 
-            ISet<string> keys = this.invoicesByDueDate[dueDate];
-
-            foreach (var key in keys)
+            foreach (var invoice in filteredInvoices)
             {
-                this.invoices[key].DueDate = this.invoices[key].DueDate.AddDays(days);
+                invoice.DueDate = invoice.DueDate.AddDays(days);
             }
+
         }
 
 
@@ -182,11 +220,11 @@
             string serialNumber = invoice.SerialNumber;
 
             this.invoices.Add(serialNumber, invoice);
-            this.AddToDictionary(invoice.IssueDate.Date, serialNumber, ref invoicesByIssueDate);
-            this.AddToDictionary(invoice.DueDate.Date, serialNumber, ref invoicesByDueDate);
-            this.AddToDictionary(invoice.Department, serialNumber, ref invoicesByDepartment);
-            this.AddToDictionary(invoice.CompanyName, serialNumber, ref invoicesByCompany);
-            this.CheckIfPaid(invoice);
+            //  this.AddToDictionary(invoice.IssueDate.Date, serialNumber, ref invoicesByIssueDate);
+            //  this.AddToDictionary(invoice.DueDate.Date, serialNumber, ref invoicesByDueDate);
+            // this.AddToDictionary(invoice.Department, serialNumber, ref invoicesByDepartment);
+            //   this.AddToDictionary(invoice.CompanyName, serialNumber, ref invoicesByCompany);
+            // this.CheckIfPaid(invoice);
         }
 
         private void AddToDictionary<TKey>(TKey key, string serialNumber, ref IDictionary<TKey, ISet<string>> dictionary)
@@ -199,13 +237,13 @@
             dictionary[key].Add(serialNumber);
         }
 
-        private void CheckIfPaid(Invoice invoice)
-        {
-            if (invoice.Subtotal == 0)
-            {
-                this.paidInvoices.Add(invoice.SerialNumber);
-            }
-        }
+        //private void CheckIfPaid(Invoice invoice)
+        //{
+        //    if (invoice.Subtotal == 0)
+        //    {
+        //        this.paidInvoices.Add(invoice.SerialNumber);
+        //    }
+        //}
 
 
         // Remove
@@ -220,11 +258,11 @@
             }
 
             this.invoices.Remove(number);
-            this.RemoveFromCollection(number, invoicesByIssueDate[invoice.IssueDate.Date]);
-            this.RemoveFromCollection(number, invoicesByDueDate[invoice.DueDate.Date]);
-            this.RemoveFromCollection(number, invoicesByDepartment[invoice.Department]);
-            this.RemoveFromCollection(number, invoicesByCompany[invoice.CompanyName]);
-          //  this.RemoveFromCollection(number, paidInvoices);
+            // this.RemoveFromCollection(number, invoicesByIssueDate[invoice.IssueDate.Date]);
+            // this.RemoveFromCollection(number, invoicesByDueDate[invoice.DueDate.Date]);
+            // this.RemoveFromCollection(number, invoicesByDepartment[invoice.Department]);
+            // this.RemoveFromCollection(number, invoicesByCompany[invoice.CompanyName]);
+            // this.RemoveFromCollection(number, paidInvoices);
         }
 
         private void RemoveFromCollection(string serialNumber, ISet<string> collection)
