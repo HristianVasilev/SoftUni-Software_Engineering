@@ -1,0 +1,11 @@
+USE Bakery
+GO
+
+SELECT * FROM Feedbacks
+
+BEGIN TRANSACTION
+
+DELETE FROM Feedbacks
+WHERE CustomerId = 14 OR ProductId = 5
+
+ROLLBACK
