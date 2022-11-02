@@ -7,7 +7,6 @@
     {
         private static IList<KeyValuePair<string, string>> messages = new List<KeyValuePair<string, string>>();
 
-
         [HttpGet]
         public IActionResult Show()
         {
