@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<ProductViewModel>
+@{
+    ViewBag.Title = "All Products";
+}
+
+<html>
+    <body>
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">@ViewBag.Title</div>
+            <ul class="list-group list-group-flush">
+            @{
+                int i = 1;
+                @foreach (var pr in Model)
+                {
+                    <li class="list-group-item">N.@i (ID: @pr.Id) @pr.Name - @pr.Price lv.</li>
+                    i++;
+                }           
+            }          
+            </ul>
+        </div>
+    </body>
+</html>
