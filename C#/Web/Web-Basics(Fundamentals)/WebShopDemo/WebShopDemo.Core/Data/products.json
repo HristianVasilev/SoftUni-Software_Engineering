@@ -1,0 +1,32 @@
+[
+  {
+    "id": "4bc54837-9a76-49ca-92eb-a573923f0f60",
+    "name": "Beer",
+    "price": "1.79",
+    "quantity": 87
+  },
+  {
+    "id": "69ead8ed-606f-4cfd-b8d7-1647a06d3a17",
+    "name": "Chips",
+    "price": "3.29",
+    "quantity": 43
+  },
+  {
+    "id": "ff460ff1-2f65-4a6e-a1d7-638bf619b0e1",
+    "name": "Whiskey",
+    "price": "22.89",
+    "quantity": 26
+  },
+  {
+    "id": "4817e869-94bb-4bfe-ab2e-6a20d6a1d856",
+    "name": "Nuts",
+    "price": "2.19",
+    "quantity": 64
+  },
+  {
+    "id": "f7c973f3-8af7-4b7d-9fa4-0490d33b703a",
+    "name": "Waffles",
+    "price": "0.79",
+    "quantity": 92
+  }
+]
