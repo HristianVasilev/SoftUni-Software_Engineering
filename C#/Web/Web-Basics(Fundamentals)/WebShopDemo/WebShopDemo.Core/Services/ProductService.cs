@@ -35,5 +35,7 @@
             string data = await File.ReadAllTextAsync(dataPath);
             return JsonConvert.DeserializeObject<IEnumerable<ProductDto>>(data);
         }
+
+
     }
 }

@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebShopDemo.Core.Models;
-namespace WebShopDemo.Data
+﻿namespace WebShopDemo.Core
 {
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using WebShopDemo.Core.Data.Model;
 
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -11,6 +10,6 @@ namespace WebShopDemo.Data
             : base(options)
         {
         }
-        public DbSet<WebShopDemo.Core.Models.ProductDto> ProductDto { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
