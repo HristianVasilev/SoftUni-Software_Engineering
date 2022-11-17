@@ -17,6 +17,7 @@
                 <span asp-validation-for="@Model.Content" class="small text-danger"></span>
             </div>
         </div>
+        <a asp-controller="Post" asp-action="All" class="btn btn-outline-dark mt-3">Cancel</a>
         <input class="btn btn-primary mt-3" type="submit" value="@ViewBag.SubmitButton" />
     </form>
 </div>
