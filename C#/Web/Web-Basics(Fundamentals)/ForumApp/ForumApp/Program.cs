@@ -1,4 +1,11 @@
+using ForumApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Set db context
+builder.Services.AddDbContext<ForumDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DockerDbConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
