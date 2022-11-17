@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "My first post",
+    "content": "My first post will be about performing CRUD operations in MVC. That will be fun!"
+  },
+  {
+    "id": 2,
+    "title": "My second post",
+    "content": "This is my second post. CRUD operations in MVC are getting more and more interesting!"
+  },
+  {
+    "id": 3,
+    "title": "My third post",
+    "content": "Hello there! I'm getting better and better with the CRUD operations in MVC. Stay tuned!"
+  }
+]
